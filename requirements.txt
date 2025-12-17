@@ -1,0 +1,13 @@
+Flask
+gunicorn
+Werkzeug
+
+pandas
+scikit-learn
+numpy
+
+pypdf
+
+torch
+sentence-transformers
+keybert
