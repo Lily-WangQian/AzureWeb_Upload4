@@ -2,8 +2,7 @@ name: Deploy Flask app to Azure Web App
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -11,27 +10,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository code
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-      # Step 3: Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4: Deploy to Azure Web App
+      # Create a clean zip (avoid venv, git, caches, uploads, etc.)
+      - name: Build deployment package
+        run: |
+          zip -r release.zip . \
+            -x "*.git*" \
+            -x "*__pycache__*" \
+            -x "*.venv*" \
+            -x "*venv*" \
+            -x "*uploads/*" \
+            -x "*.DS_Store*"
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'lily-bank-std-comparator-v4'
-          slot-name: 'Production'
+          app-name: "lily-bank-std-comparator-v4"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-          package: '.'
+          package: release.zip
