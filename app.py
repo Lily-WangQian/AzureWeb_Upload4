@@ -22,7 +22,7 @@ ALLOWED_EXT = {".pdf"}
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-CSV_PATH = "standards keywords.csv"
+CSV_PATH = "standards_keywords.csv"
 
 # ------------ 1. Load and prepare standards_df_copy ------------
 
