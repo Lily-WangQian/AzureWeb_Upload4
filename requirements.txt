@@ -6,8 +6,10 @@ pandas
 scikit-learn
 numpy
 
-pdfplumber
-pypdf2
 pypdf
 
-yake
+torch
+sentence-transformers
+keybert
+
+
