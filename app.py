@@ -87,7 +87,7 @@ standards_df_copy["Combined Keywords Display"] = standards_df_copy["Combined Key
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 EMBED_MODEL = SentenceTransformer(
-    "Alibaba-NLP/gte-large-en-v1.5",
+    "all-MiniLM-L6-v2",
     device=device,
     trust_remote_code=True   # ★ REQUIRED for this model
 )
