@@ -1,18 +1,14 @@
-# --- Web framework ---
 Flask
 gunicorn
 Werkzeug
 
-# --- Data processing ---
 pandas
 numpy
 scikit-learn
 
-# --- PDF handling (FIX for Azure AES error) ---
 pypdf
 cryptography>=3.1
 
-# --- NLP / ML ---
 torch
 sentence-transformers
 keybert
